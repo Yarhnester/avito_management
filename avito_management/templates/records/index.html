@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
+{% block title %}Главная страница{% endblock %}
 {% block content %}
+<div class="container py-5">
+  <h1>Договора</h1>
+  <a href="{% url 'records:contract_add' %}">Добавить договор</a>
+  <p>
+    {% for record in records %}
+  <h3>{{ record.partner }}</h3>
+  <table>
+    <colgroup>
+      <!-- С помощью этой конструкции задаем цвет фона для столбцов таблицы-->
+      <col span="10" style="background:LightCyan">
+    </colgroup>
+    <tbody>
+    <tr>
+      <th>ПВЗ</th>
+      <th>Услуга</th>
+      <th>Контактное лицо</th>
+      <th>Статус договора</th>
+      <th>Тариф</th>
+      <th>Дата оплаты</th>
+      <th>Доставка документов</th>
+      <th>ЭДО</th>
+      <th>Примечания</th>
+    </tr>
+    <tr>
+      <td>{{ record.pvz }}</td>
+      <td>{{ record.service }}</td>
+      <td>{{ record.contact }}</td>
+      <td>{{ record.the_original_contract }}</td>
+      <td>{{ record.rate}}</td>
+      <td>{{ record.payment_date }}</td>
+      <td>{{ record.document }}</td>
+      <td>{{ record.edo }}</td>
+      <td>{{ record.notes }}</td>
+    </tr>
+    <li>
 
-{% for record in records %}
-{% if forloop.first %}
-<h3>{{ record.partner }}</h3>
-<li>{{ record.pvz }}
-<li>{{ record.service }}
-<p>
-{% endif %}
-{% endfor %}
-{% endblock %}
+
+      <!-- Ссылка на изменение договора -->
+      <a href="{% url 'records:contract_edit' record.id %}">Внести изменения</a>
+    </li>
+    <p>
+    </tbody>
+  </table>
+  <p>
+    {% endfor %}
+
+    {% endblock %}

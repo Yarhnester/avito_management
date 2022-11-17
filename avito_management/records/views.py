@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RecordForm
 from .models import Record
 
@@ -17,7 +17,23 @@ def contract_add(request):
         return render(request, 'records/contract_add.html', {'form': form})
     record = form.save(commit=False)
     record.save()
-    return redirect('')
+    return redirect('records:index')
+
+
+def contract_edit(request, record_id):
+    record = get_object_or_404(Record, pk=record_id)
+    form = RecordForm(request.POST or None, instance=record)
+    if form.is_valid():
+        form.save()
+        return redirect('records:index')
+
+    context = {
+        'records': record,
+        'form': form,
+        'is_edit': True,
+    }
+    return render(request, 'records/contract_add.html', context)
+
 
 
 

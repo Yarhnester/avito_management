@@ -7,4 +7,5 @@ urlpatterns = [
     # Главная страница
     path('', views.index, name='index'),
     path('contract_add/', views.contract_add, name='contract_add'),
+    path('contract_edit/<int:record_id>/', views.contract_edit, name='contract_edit'),
 ]
