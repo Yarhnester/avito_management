@@ -1,11 +1,39 @@
-<!DOCTYPE html>
+{% load static %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'img/logo.png' %}" width="180" height="55" class="d-inline-block align-top" alt="">
+      </a>
+      <ul class="nav nav-pills">
+        {% with request.resolver_match.view_name as view_name %}
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link
+             {% if view_name == 'users:graphic' %} active
+          {% endif %}" href="{% url 'users:graphic' %}"> График </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link
+             {% if view_name == 'records:index' %} active
+             {% endif %}" href="{% url 'records:index' %}"> Договора </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="{% url 'users:logout' %}">Выход</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link
+             {% if view_name == 'users:login' %} active
+             {% endif %}" href="{% url 'users:login' %}"> Вход </a>
+        </li>
 
-</head>
-<body>
+        {% endif %}
+        {% endwith %}
+      </ul>
 
-</body>
-</html>
+
+    </div>
+  </nav>
+</header>

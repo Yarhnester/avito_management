@@ -3,7 +3,6 @@ from .forms import RecordForm
 from .models import Record
 
 
-# Create your views here.
 def index(request):
     records_list = Record.objects.all()
     return render(request, 'records/index.html', {'records': records_list})
@@ -33,7 +32,3 @@ def contract_edit(request, record_id):
         'is_edit': True,
     }
     return render(request, 'records/contract_add.html', context)
-
-
-
-

@@ -34,7 +34,6 @@
           </div>
           {% endfor %}
           {% endif %}
-
           <form method="post" action="{% url 'records:contract_add' %}">
             {% csrf_token %}
             {% for field in form %}

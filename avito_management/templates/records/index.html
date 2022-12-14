@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Главная страница{% endblock %}
+{% block title %}Договора{% endblock %}
 {% block content %}
 <div class="container py-5">
   <h1>Договора</h1>
@@ -36,8 +36,6 @@
       <td>{{ record.notes }}</td>
     </tr>
     <li>
-
-
       <!-- Ссылка на изменение договора -->
       <a href="{% url 'records:contract_edit' record.id %}">Внести изменения</a>
     </li>
