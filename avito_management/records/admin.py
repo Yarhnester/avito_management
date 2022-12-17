@@ -8,5 +8,4 @@ class RecordAdmin(admin.ModelAdmin):
     list_filter = ('payment_date',)
 
 
-# Register your models here.
 admin.site.register(Record, RecordAdmin)

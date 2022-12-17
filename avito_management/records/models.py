@@ -1,18 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from core.context_processors.pvz_list import PVZ
+
 User = get_user_model()
 
-PVZ = (
-    ('PVZ1', 'ПВЗ-1'),
-    ('PVZ2', 'ПВЗ-2'),
-    ('PVZ3', 'ПВЗ-3'),
-    ('PVZ4', 'ПВЗ-4'),
-    ('PVZ5', 'ПВЗ-5'),
-    ('PVZ6', 'ПВЗ-6'),
-    ('PVZ7', 'ПВЗ-7'),
-    ('PVZ8', 'ПВЗ-8'),
-)
 Y_OR_N = (
     ('Yes', 'Да'),
     ('No', 'Нет')
@@ -25,8 +17,11 @@ status_contract = (
 )
 
 
-# Create your models here.
 class Record(models.Model):
+    class Meta:
+        verbose_name = 'Договор'
+        verbose_name_plural = 'Договора'
+
     pvz = models.CharField(max_length=4, choices=PVZ, default=None, blank=True,
                            verbose_name='ПВЗ')
     service = models.CharField(max_length=50, blank=True, verbose_name='Услуга')

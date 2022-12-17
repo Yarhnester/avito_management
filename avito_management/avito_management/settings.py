@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'records.apps.RecordsConfig',
     'core.apps.CoreConfig',
+    'chart.apps.ChartConfig',
 
 ]
 

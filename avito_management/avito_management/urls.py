@@ -9,4 +9,5 @@ urlpatterns = [
     path('records/', include('records.urls')),
     path('auth/', include('users.urls')),
     path('auth/', include('django.contrib.auth.urls')),
+    path('chart/', include('chart.urls')),
 ]
